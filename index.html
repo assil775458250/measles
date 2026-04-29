@@ -1,787 +1,801 @@
-    <!DOCTYPE html>
-    <html lang="ar" dir="rtl">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>خطر الحصبة العابر</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
-        <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Tajawal:wght@400;700&display=swap"
-            rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-        <!-- مكتبة AOS للأنيميشن أثناء التمرير -->
-        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-        <style>
-            :root {
-                --primary-blue: #0d47a1;
-                --secondary-green: #2e7d32;
-                --accent-yellow: #fdd835;
-                --light-bg: #f8f9fa;
-                --gradient-start: #0d47a1;
-                --gradient-end: #1e88e5;
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>خطر الحصبة العابر</title>
+
+    <!-- Bootstrap RTL -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css">
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #0d47a1;
+            --secondary: #1565c0;
+            --green: #2e7d32;
+            --light: #f4f7fb;
+            --dark: #1f2937;
+            --white: #ffffff;
+            --danger: #d32f2f;
+            --radius: 22px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Cairo", sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        section {
+            padding: 90px 0;
+        }
+
+        .section-title {
+            font-size: clamp(1.7rem, 4vw, 2.5rem);
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            width: 80px;
+            height: 5px;
+            border-radius: 10px;
+            background: var(--green);
+            position: absolute;
+            bottom: -10px;
+            right: 0;
+        }
+
+        /* Navbar */
+
+        .navbar {
+            background: rgba(13, 71, 161, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.3rem;
+        }
+
+        .nav-link {
+            color: white !important;
+            font-weight: 600;
+            margin-inline: 8px;
+            transition: .3s;
+        }
+
+        .nav-link:hover {
+            color: #ffeb3b !important;
+        }
+
+        /* Hero */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+
+            background:
+                linear-gradient(rgba(13, 71, 161, .88),
+                    rgba(21, 101, 192, .85)),
+                url("https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1600&auto=format&fit=crop") center/cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.4;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            margin: 25px 0;
+            max-width: 700px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn-main {
+            background: var(--green);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: .3s;
+        }
+
+        .btn-main:hover {
+            background: #1b5e20;
+            transform: translateY(-3px);
+        }
+
+        .btn-outline-custom {
+            border: 2px solid white;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: .3s;
+        }
+
+        .btn-outline-custom:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* Cards */
+
+        .custom-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            height: 100%;
+            transition: .4s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .06);
+        }
+
+        .custom-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .icon-box {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            background: rgba(21, 101, 192, .1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .icon-box i {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        /* Statistics */
+
+        .stats {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .stat-box h2 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 800;
+        }
+
+        .stat-box p {
+            margin-top: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* FAQ */
+
+        .accordion-item {
+            border: none;
+            border-radius: 18px !important;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .accordion-button {
+            font-weight: 700;
+            padding: 20px;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Footer */
+
+        footer {
+            background: #0b1727;
+            color: rgba(255, 255, 255, .8);
+            padding: 60px 0 30px;
+        }
+
+        footer h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        footer a {
+            color: rgba(255, 255, 255, .8);
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, .1);
+            margin-top: 30px;
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 992px) {
+
+            section {
+                padding: 70px 0;
             }
 
-            body {
-                font-family: 'Cairo', sans-serif;
-                line-height: 1.8;
-                color: #333;
-                background-color: var(--light-bg);
-                overflow-x: hidden;
-            }
-
-            /* تحسينات أساسية للأنيميشن */
-            .navbar {
-                background-color: var(--primary-blue);
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-                transition: all 0.3s ease;
-            }
-
-            .navbar.scrolled {
-                padding: 0.5rem 0;
-                background-color: rgba(13, 71, 161, 0.95);
-                backdrop-filter: blur(10px);
-            }
-
-            /* خلفية الهيرو متحركة */
-            .hero-section {
-                background: linear-gradient(-45deg, #0d47a1, #1565c0, #0d47a1, #1e88e5);
-                background-size: 400% 400%;
-                animation: gradientBG 15s ease infinite;
-                color: white;
-                padding: 100px 0;
+            .hero {
                 text-align: center;
-                position: relative;
-                overflow: hidden;
+                padding-top: 120px;
             }
 
-            @keyframes gradientBG {
-                0% {
-                    background-position: 0% 50%;
-                }
-
-                50% {
-                    background-position: 100% 50%;
-                }
-
-                100% {
-                    background-position: 0% 50%;
-                }
-            }
-
-            /* طبقة شفافة فوق الخلفية المتحركة مع صورة خفيفة */
-            .hero-section::before {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: url('https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
-                opacity: 0.15;
-                mix-blend-mode: overlay;
-                pointer-events: none;
-            }
-
-            /* تأثير الكتابة (Typing) */
-            .typing-wrapper {
-                min-height: 80px;
-                margin-bottom: 1rem;
-            }
-
-            .typed-text {
-                font-size: 2.2rem;
-                font-weight: 700;
-                border-left: 3px solid var(--accent-yellow);
-                display: inline-block;
-                padding-left: 10px;
-                animation: blink 0.7s infinite;
-            }
-
-            @keyframes blink {
-
-                0%,
-                100% {
-                    border-color: transparent;
-                }
-
-                50% {
-                    border-color: var(--accent-yellow);
-                }
-            }
-
-            .section-title {
-                color: var(--primary-blue);
-                font-weight: 700;
-                margin-bottom: 30px;
-                position: relative;
-                padding-bottom: 10px;
-                display: inline-block;
+            .hero-buttons {
+                justify-content: center;
             }
 
             .section-title::after {
-                content: '';
-                position: absolute;
-                bottom: 0;
-                right: 0;
-                width: 60px;
-                height: 4px;
-                background-color: var(--secondary-green);
-                transition: width 0.5s ease;
+                right: 50%;
+                transform: translateX(50%);
             }
 
-            .section-title:hover::after {
+            .section-title {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .navbar {
+                padding: 10px 0;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 130px 0 90px;
+            }
+
+            .custom-card {
+                padding: 25px;
+            }
+
+            .stat-box {
+                padding: 20px;
+            }
+
+            .hero-buttons a {
                 width: 100%;
             }
 
-            .card {
-                border: none;
-                border-radius: 20px;
-                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-                overflow: hidden;
+            .btn-main,
+            .btn-outline-custom {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .hero h1 {
+                line-height: 1.7;
             }
 
-            .card:hover {
-                transform: translateY(-12px) scale(1.02);
-                box-shadow: 0 25px 40px rgba(0, 0, 0, 0.15);
+            .custom-card {
+                border-radius: 18px;
             }
 
-            /* أيقونات دوارة عند hover */
             .icon-box {
-                font-size: 2.5rem;
-                color: var(--secondary-green);
-                margin-bottom: 15px;
-                display: inline-block;
-                transition: transform 0.3s ease;
+                width: 65px;
+                height: 65px;
             }
 
-            .card:hover .icon-box {
-                transform: rotateY(180deg);
-                color: var(--primary-blue);
+            .icon-box i {
+                font-size: 1.5rem;
             }
+        }
+    </style>
+</head>
 
-            /* زر مخصص مع نبض */
-            .btn-primary-custom {
-                background-color: var(--secondary-green);
-                border: none;
-                padding: 12px 30px;
-                border-radius: 30px;
-                font-weight: bold;
-                color: white;
-                transition: all 0.3s ease;
-                position: relative;
-                overflow: hidden;
-            }
+<body>
 
-            .btn-primary-custom:hover {
-                background-color: #1b5e20;
-                transform: scale(1.05);
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            }
+    <!-- Navbar -->
 
-            .btn-primary-custom:active {
-                transform: scale(0.98);
-            }
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
 
-            /* نبض مستمر لزر الطوارئ العلوي */
-            .emergency-banner a {
-                animation: softPulse 1.5s infinite;
-                display: inline-block;
-                font-weight: bold;
-            }
+            <a class="navbar-brand" href="#">
+                <i class="fa-solid fa-shield-virus"></i>
+                خطر الحصبة العابر
+            </a>
 
-            @keyframes softPulse {
-                0% {
-                    text-shadow: 0 0 0px rgba(255, 255, 255, 0.7);
-                }
+            <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                70% {
-                    text-shadow: 0 0 10px rgba(255, 255, 255, 1);
-                }
+            <div class="collapse navbar-collapse" id="navMenu">
 
-                100% {
-                    text-shadow: 0 0 0px rgba(255, 255, 255, 0.7);
-                }
-            }
+                <ul class="navbar-nav ms-auto">
 
-            /* بطاقات الإحصائيات */
-            .stat-card {
-                background-color: white;
-                padding: 25px 15px;
-                border-radius: 20px;
-                transition: all 0.4s ease;
-                border-right: 5px solid var(--secondary-green);
-            }
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">عن الحصبة</a>
+                    </li>
 
-            .stat-card:hover {
-                transform: translateY(-5px);
-                background-color: #fff9c4;
-            }
+                    <li class="nav-item">
+                        <a class="nav-link" href="#symptoms">الأعراض</a>
+                    </li>
 
-            /* أنيميشن فقاعات خلف الهيرو */
-            .bubble {
-                position: absolute;
-                bottom: -50px;
-                background: rgba(255, 255, 255, 0.2);
-                border-radius: 50%;
-                pointer-events: none;
-                animation: rise 10s infinite ease-in;
-                z-index: 0;
-            }
+                    <li class="nav-item">
+                        <a class="nav-link" href="#vaccine">اللقاح</a>
+                    </li>
 
-            @keyframes rise {
-                0% {
-                    transform: translateY(0) scale(1);
-                    opacity: 0.6;
-                }
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faq">الأسئلة</a>
+                    </li>
 
-                100% {
-                    transform: translateY(-120vh) scale(1.5);
-                    opacity: 0;
-                }
-            }
+                </ul>
 
-            /* أيقونات الوسائط */
-            .media-card i {
-                transition: all 0.3s;
-            }
-
-            .media-card:hover i {
-                transform: scale(1.2) rotate(5deg);
-                color: var(--primary-blue);
-            }
-
-            /* مؤشر التمرير السلس */
-            html {
-                scroll-behavior: smooth;
-            }
-
-            /* شارة تأكيد خفيفة */
-            .accordion-button:not(.collapsed) {
-                background-color: #e3f2fd;
-                color: var(--primary-blue);
-            }
-
-            footer a {
-                transition: all 0.3s ease;
-            }
-
-            footer a:hover {
-                color: var(--accent-yellow) !important;
-                transform: translateX(-5px);
-                display: inline-block;
-            }
-
-            /* تحسين الصور */
-            img {
-                transition: transform 0.5s ease, filter 0.3s;
-            }
-
-            .card-img-top:hover {
-                transform: scale(1.02);
-                filter: brightness(0.98);
-            }
-        </style>
-    </head>
-
-    <body>
-
-        <div class="emergency-banner text-center" data-aos="fade-down">
-            <div class="container">
-                <i class="fas fa-exclamation-triangle me-2"></i>
-                حالات الحصبة في تزايد بمحافظة حضرموت. طعّم طفلك اليوم! طوارئ الصحة: <a href="tel:195"
-                    class="text-white">195</a>
             </div>
+
+        </div>
+    </nav>
+
+    <!-- Hero -->
+
+    <section class="hero">
+
+        <div class="container">
+
+            <div class="hero-content">
+
+                <h1>
+                    احمِ أطفالك من الحصبة قبل فوات الأوان
+                </h1>
+
+                <p>
+                    الحصبة مرض شديد العدوى، لكن الوقاية منه سهلة وآمنة عبر التطعيم.
+                    حافظ على صحة طفلك وساهم في حماية المجتمع بالكامل.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#vaccine" class="btn-main">
+                        <i class="fa-solid fa-syringe"></i>
+                        معلومات اللقاح
+                    </a>
+
+                    <a href="#about" class="btn-outline-custom">
+                        معرفة المزيد
+                    </a>
+
+                </div>
+
+            </div>
+
         </div>
 
-        <nav class="navbar navbar-expand-lg navbar-dark sticky-top" id="mainNav">
-            <div class="container">
-                <a class="navbar-brand fw-bold" href="#">خطر الحصبة العابر<i class="fas fa-heartbeat"></i></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#home">الرئيسية</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#about">ما هي الحصبة؟</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#symptoms">الأعراض</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#vaccine">اللقاح</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#care">إرشادات الرعاية</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#faq">الأسئلة الشائعة</a></li>
-                    </ul>
+    </section>
+
+    <!-- About -->
+
+    <section id="about">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                ما هي الحصبة؟
+            </h2>
+
+            <div class="row g-4 mt-4">
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="custom-card">
+
+                        <div class="icon-box">
+                            <i class="fa-solid fa-virus"></i>
+                        </div>
+
+                        <h4>مرض فيروسي</h4>
+
+                        <p>
+                            الحصبة مرض ينتقل بسرعة عبر الرذاذ الناتج عن السعال أو العطس.
+                        </p>
+
+                    </div>
+
                 </div>
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="custom-card">
+
+                        <div class="icon-box">
+                            <i class="fa-solid fa-lungs"></i>
+                        </div>
+
+                        <h4>يصيب الجهاز التنفسي</h4>
+
+                        <p>
+                            يؤثر على الأطفال بشكل كبير وقد يسبب مضاعفات خطيرة.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="custom-card">
+
+                        <div class="icon-box">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                        </div>
+
+                        <h4>الوقاية ممكنة</h4>
+
+                        <p>
+                            اللقاح فعال وآمن بنسبة عالية ويحمي الطفل والمجتمع.
+                        </p>
+
+                    </div>
+
+                </div>
+
             </div>
-        </nav>
 
-        <header id="home" class="hero-section">
-            <div class="container position-relative" style="z-index: 2;">
-                <div class="typing-wrapper mb-3">
-                    <span id="typed-output" class="typed-text"></span>
-                </div>
-                <p class="lead fs-3 mb-4" data-aos="fade-up" data-aos-delay="200">أطفالكم أمانة.. احموهم بلقاح الحصبة</p>
-                <h2 class="mb-5" data-aos="fade-up" data-aos-delay="400">"نحو مجتمع حضرمي خالٍ من الحصبة"</h2>
-                <div class="row g-4 justify-content-center">
-                    <div class="col-md-3" data-aos="zoom-in" data-aos-delay="600">
-                        <div class="stat-card">
-                            <h3 class="fw-bold">97%</h3>
-                            <p class="mb-0 text-muted">فعالية اللقاح في الوقاية</p>
-                        </div>
+        </div>
+
+    </section>
+
+    <!-- Statistics -->
+
+    <section class="stats">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="stat-box">
+
+                        <h2>97%</h2>
+
+                        <p>فعالية اللقاح</p>
+
                     </div>
-                    <div class="col-md-3" data-aos="zoom-in" data-aos-delay="800">
-                        <div class="stat-card">
-                            <h3 class="fw-bold">7140+</h3>
-                            <p class="mb-0 text-muted">حالة إصابة في اليمن (2026)</p>
-                        </div>
-                    </div>
+
                 </div>
-                
+
+                <div class="col-md-6">
+
+                    <div class="stat-box">
+
+                        <h2>7140+</h2>
+
+                        <p>حالة إصابة مسجلة</p>
+
+                    </div>
+
+                </div>
+
             </div>
-            <!-- فقاعات متحركة -->
-            <div id="bubbles-container"></div>
-        </header>
 
-        <section id="about" class="py-5">
-            <div class="container">
-                <h2 class="section-title" data-aos="fade-right">ما هي الحصبة؟</h2>
-                <div class="row align-items-center g-5">
-                    <div class="col-lg-6" data-aos="fade-left">
-                        <p class="lead">الحصبة مرض فيروسي شديد العدوى يصيب الجهاز التنفسي، وينتشر بسرعة فائقة خاصة بين
-                            الأطفال غير المطعمين (السِّقَل).</p>
-                        <div class="mt-4">
-                            <div class="d-flex mb-3">
-                                <i class="fas fa-wind icon-box me-3 mt-1" style="font-size: 1.5rem;"></i>
-                                <div>
-                                    <h5>طرق الانتقال</h5>
-                                    <p>ينتشر عبر الرذاذ الناتج عن السعال أو العطس، ويمكن للفيروس البقاء في الهواء لمدة
-                                        ساعتين.</p>
-                                </div>
-                            </div>
-                            <div class="d-flex mb-3">
-                                <i class="fas fa-hourglass-half icon-box me-3 mt-1" style="font-size: 1.5rem;"></i>
-                                <div>
-                                    <h5>فترة الحضانة</h5>
-                                    <p>تبدأ الأعراض بالظهور عادة بعد 10 إلى 14 يوماً من التعرض للفيروس.</p>
-                                </div>
-                            </div>
-                            <div class="d-flex">
-                                <i class="fas fa-biohazard icon-box me-3 mt-1" style="font-size: 1.5rem;"></i>
-                                <div>
-                                    <h5>لماذا هي خطيرة؟</h5>
-                                    <p>قد تؤدي لمضاعفات جسيمة مثل الالتهاب الرئوي، التهاب الدماغ (الذي يسبب تلف الدماغ)،
-                                        وفقدان السمع الدائم.</p>
-                                </div>
-                            </div>
+        </div>
+
+    </section>
+
+    <!-- Symptoms -->
+
+    <section id="symptoms">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                الأعراض
+            </h2>
+
+            <div class="row g-4 mt-4">
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="custom-card text-center">
+
+                        <div class="icon-box mx-auto">
+                            <i class="fa-solid fa-temperature-high"></i>
                         </div>
+
+                        <h4>حمى مرتفعة</h4>
+
+                        <p>
+                            ارتفاع شديد في درجة الحرارة مع تعب وإرهاق.
+                        </p>
+
                     </div>
-                    <div class="col-lg-6" data-aos="flip-right" data-aos-duration="1000">
-                        <img src="https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&w=800&q=80"
-                            class="img-fluid rounded-4 shadow" alt="التوعية الطبية">
-                    </div>
+
                 </div>
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="custom-card text-center">
+
+                        <div class="icon-box mx-auto">
+                            <i class="fa-solid fa-face-tired"></i>
+                        </div>
+
+                        <h4>سعال وزكام</h4>
+
+                        <p>
+                            أعراض تنفسية قوية مع احمرار في العينين.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="custom-card text-center">
+
+                        <div class="icon-box mx-auto">
+                            <i class="fa-solid fa-allergies"></i>
+                        </div>
+
+                        <h4>طفح جلدي</h4>
+
+                        <p>
+                            يبدأ من الوجه ثم ينتشر لبقية الجسم.
+                        </p>
+
+                    </div>
+
+                </div>
+
             </div>
-        </section>
 
-        <section id="symptoms" class="py-5 bg-white">
-            <div class="container">
-                <h2 class="section-title text-center mx-auto" data-aos="fade-down">التعرف على الأعراض (دليل الوالدين)</h2>
-                <div class="row g-4 mt-4">
-                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                        <div class="card h-100 p-4 text-center border-0 shadow-sm">
-                            <i class="fas fa-thermometer-high icon-box"></i>
-                            <h4>الأعراض الأولية</h4>
-                            <p>حمى شديدة (أكثر من 40 درجة)، سعال جاف، زكام (رشح)، وعيون حمراء دامعة.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                        <div class="card h-100 p-4 text-center border-0 shadow-sm">
-                            <i class="fas fa-comment-dots icon-box"></i>
-                            <h4>العلامة المميزة</h4>
-                            <p>ظهور "بقع كوبليك": وهي بقع بيضاء صغيرة تشبه ذرات الملح تظهر داخل الفم والخدين.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                        <div class="card h-100 p-4 text-center border-0 shadow-sm">
-                            <i class="fas fa-allergies icon-box"></i>
-                            <h4>الطفح الجلدي</h4>
-                            <p>يبدأ من الوجه وأعلى الرقبة ثم ينتشر تدريجياً للأسفل ليصل لليدين والقدمين.</p>
-                        </div>
-                    </div>
+        </div>
+
+    </section>
+
+    <!-- Vaccine -->
+
+    <section id="vaccine">
+
+        <div class="container">
+
+            <div class="row align-items-center g-5">
+
+                <div class="col-lg-6">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1585435557343-3b092031d4f7?q=80&w=1200&auto=format&fit=crop"
+                        class="rounded-4 shadow-lg"
+                        alt="لقاح الحصبة">
+
                 </div>
-                <div class="alert alert-danger mt-5 rounded-4 p-4 border-0" data-aos="zoom-in-up">
-                    <h5><i class="fas fa-phone-alt me-2"></i> متى تطلب الطوارئ فوراً؟</h5>
-                    <ul class="mb-0 mt-2">
-                        <li>صعوبة شديدة في التنفس.</li>
-                        <li>تشنجات ناتجة عن الحمى.</li>
-                        <li>فقدان الوعي أو خمول شديد جداً.</li>
-                    </ul>
+
+                <div class="col-lg-6">
+
+                    <h2 class="section-title">
+                        اللقاح هو الحماية الأفضل
+                    </h2>
+
+                    <p class="mt-4">
+                        يحصل الطفل على جرعتين أساسيتين من لقاح الحصبة
+                        لحمايته من المضاعفات الخطيرة وتقليل انتشار المرض.
+                    </p>
+
+                    <div class="custom-card mt-4">
+
+                        <h5>جدول التطعيم</h5>
+
+                        <hr>
+
+                        <p>
+                            الجرعة الأولى: عند عمر 9 أشهر
+                        </p>
+
+                        <p class="mb-0">
+                            الجرعة الثانية: عند عمر 18 شهرًا
+                        </p>
+
+                    </div>
+
                 </div>
+
             </div>
-        </section>
 
-        <section id="vaccine" class="py-5">
-            <div class="container">
-                <h2 class="section-title" data-aos="fade-right">اللقاح والوقاية</h2>
-                <div class="row g-5">
-                    <div class="col-lg-7" data-aos="fade-left">
-                        <div class="card p-4 mb-4 bg-primary text-white"
-                            style="background: linear-gradient(135deg, #0d47a1, #1976d2);">
-                            <h4>جدول التطعيم الوطني (اليمن)</h4>
-                            <div class="table-responsive mt-3">
-                                <table class="table table-borderless text-white">
-                                    <thead>
-                                        <tr>
-                                            <th>الجرعة</th>
-                                            <th>العمر المحدد</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>الجرعة الأولى</td>
-                                            <td>عند عمر 9 أشهر</td>
-                                        </tr>
-                                        <tr>
-                                            <td>الجرعة الثانية</td>
-                                            <td>عند عمر 18 شهراً</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+        </div>
+
+    </section>
+
+    <!-- FAQ -->
+
+    <section id="faq">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                الأسئلة الشائعة
+            </h2>
+
+            <div class="accordion mt-5" id="faqAccordion">
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#faq1">
+
+                            هل اللقاح آمن للأطفال؟
+
+                        </button>
+
+                    </h2>
+
+                    <div id="faq1"
+                        class="accordion-collapse collapse"
+                        data-bs-parent="#faqAccordion">
+
+                        <div class="accordion-body">
+
+                            نعم، اللقاح آمن وفعال وتم اعتماده عالميًا.
+
                         </div>
-                        <div class="p-3 bg-white rounded-4 shadow-sm border-start border-success border-5"
-                            data-aos="fade-right">
-                            <h5><i class="fas fa-shield-virus text-success me-2"></i> مناعة القطيع</h5>
-                            <p class="mb-0">بتطعيم طفلك، أنت لا تحميه هو فقط، بل تحمي أطفال جيرانك وأقاربك الذين قد لا
-                                يستطيعون أخذ اللقاح لأسباب طبية.</p>
-                        </div>
+
                     </div>
-                    <div class="col-lg-5" data-aos="flip-left">
-                        <div class="card p-4 h-100 shadow-sm">
-                            <h4 class="text-primary mb-4">دحض الشائعات</h4>
-                            <div class="mb-3">
-                                <p class="fw-bold mb-1 text-danger">الشائعة: اللقاح يسبب التوحد</p>
-                                <p class="small">الحقيقة: أثبتت آلاف الدراسات العالمية عدم وجود أي صلة بين اللقاح والتوحد.
-                                </p>
-                            </div>
-                            <div class="mb-3 border-top pt-3">
-                                <p class="fw-bold mb-1 text-danger">الشائعة: اللقاح يؤثر على الإنجاب</p>
-                                <p class="small">الحقيقة: اللقاح آمن تماماً ولا يؤثر على الخصوبة؛ بل إن الإصابة بالمرض هي ما
-                                    قد تسبب مضاعفات خطيرة.</p>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
+
+                <div class="accordion-item">
+
+                    <h2 class="accordion-header">
+
+                        <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#faq2">
+
+                            هل يمكن الإصابة بالحصبة مرتين؟
+
+                        </button>
+
+                    </h2>
+
+                    <div id="faq2"
+                        class="accordion-collapse collapse"
+                        data-bs-parent="#faqAccordion">
+
+                        <div class="accordion-body">
+
+                            نادرًا جدًا، وغالبًا تمنح الإصابة الأولى مناعة طويلة.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
-        </section>
 
-        <section id="care" class="py-5 bg-white">
-            <div class="container">
-                <h2 class="section-title" data-aos="fade-up">ماذا تفعل إذا أصيب طفلك (مارود)؟</h2>
-                <div class="row g-4">
-                    <div class="col-md-4 text-center" data-aos="zoom-in" data-aos-delay="100">
-                        <img src="https://cdn-icons-png.flaticon.com/512/2859/2859706.png" width="80" alt="عزل" class="mb-3"
-                            style="transition: transform 0.3s;">
-                        <h5>العزل المنزلي</h5>
-                        <p>يجب عزل الطفل عن بقية أفراد الأسرة غير المطعمين لمدة 4 أيام بعد ظهور الطفح الجلدي.</p>
-                    </div>
-                    <div class="col-md-4 text-center" data-aos="zoom-in" data-aos-delay="200">
-                        <img src="https://cdn-icons-png.flaticon.com/512/3022/3022248.png" width="80" alt="سوائل"
-                            class="mb-3">
-                        <h5>تخفيف الأعراض</h5>
-                        <p>الراحة التامة، شرب الكثير من السوائل، واستخدام خافضات الحرارة (تجنب الأسبرين للأطفال).</p>
-                    </div>
-                    <div class="col-md-4 text-center" data-aos="zoom-in" data-aos-delay="300">
-                        <img src="https://cdn-icons-png.flaticon.com/512/3042/3042375.png" width="80" alt="فيتامين"
-                            class="mb-3">
-                        <h5>فيتامين (أ)</h5>
-                        <p>إعطاء جرعتين من مكملات فيتامين (أ) يقلل من حدة المرض ومضاعفاته بنسبة 50%.</p>
-                    </div>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="row g-4">
+
+                <div class="col-lg-6">
+
+                    <h4>خطر الحصبة العابر</h4>
+
+                    <p>
+                        حملة توعوية لحماية الأطفال ونشر الوعي الصحي.
+                    </p>
+
                 </div>
+
+                <div class="col-lg-6">
+
+                    <h4>التواصل</h4>
+
+                    <p>
+                        <i class="fa-solid fa-phone"></i>
+                        195
+                    </p>
+
+                    <p>
+                        <i class="fa-brands fa-whatsapp"></i>
+                        775458250
+                    </p>
+
+                </div>
+
             </div>
-        </section>
 
-        <section id="faq" class="py-5 bg-light">
-            <div class="container">
-                <h2 class="section-title text-center mx-auto" data-aos="fade-down">الأسئلة الشائعة</h2>
-                <div class="accordion mt-4 shadow-sm rounded-4" id="faqAccordion">
-                    <div class="accordion-item faq-question border-0" data-aos="fade-up">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#f1">
-                                هل يمكن أن يصاب الشخص بالحصبة مرتين؟
-                            </button>
-                        </h2>
-                        <div id="f1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                نادراً جداً ما يحدث ذلك. عادةً ما تمنح الإصابة الأولى مناعة مدى الحياة ضد الفيروس.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item faq-question border-0" data-aos="fade-up" data-aos-delay="100">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#f2">
-                                ما الفرق بين الحصبة والحصبة الألمانية؟
-                            </button>
-                        </h2>
-                        <div id="f2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                الحصبة (العادية) أكثر خطورة وتسبب أعراضاً تنفسية وحمى شديدة، بينما الحصبة الألمانية أخف وطأة
-                                ولكنها شديدة الخطورة على الأجنة إذا أصيبت بها الأم الحامل.
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="footer-bottom">
+
+                جميع الحقوق محفوظة © 2026
+
             </div>
-        </section>
 
-        
+        </div>
 
-        <footer>
-            <div class="container">
-                <div class="row g-4 mb-4">
-                   
-                
-                    <div class="col-lg-4" data-aos="fade-right">
-                        <h5 class="fw-bold mb-3">اتصل بنا (حضرموت)</h5>
-                        <p class="small mb-1"><i class="fas fa-phone me-2"></i> طوارئ الصحة: 195</p>
-                        <p class="small mb-1"><i class="fas fa-phone me-2"></i> استشارات: 8000202</p>
-                       
-                    </div>
-                </div>
-                <hr class="border-secondary">
-                <div class="text-center small text-secondary">
-                    &copy; جميع الحقوق محفوظة اعداد : أصيل محمد يوسف المنصوري [فريق لوجيكر للخدمات البرمجية والحلول التقنية] - 2026
-                     <br>
-                    <a href="https://wa.me/967775458250" class="text-decoration-none">للطلب والاستفسار</a>
-                </div>
-            </div>
-        </footer>
+    </footer>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-        <script>
-            // تهيئة AOS مع خيارات متقدمة
-            AOS.init({
-                duration: 800,
-                once: false,
-                mirror: true,
-                offset: 80
-            });
+    <!-- Bootstrap -->
 
-            // تأثير الكتابة (Typing) للشعار الأساسي
-            const typedElement = document.getElementById('typed-output');
-            const phrases = ["درهم وقاية خير من قنطار علاج", "احمِ طفلك اليوم", "لقاح آمن وفعال"];
-            let phraseIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
 
-            function typeEffect() {
-                const currentPhrase = phrases[phraseIndex];
-                if (isDeleting) {
-                    typedElement.textContent = currentPhrase.substring(0, charIndex - 1);
-                    charIndex--;
-                    if (charIndex === 0) {
-                        isDeleting = false;
-                        phraseIndex = (phraseIndex + 1) % phrases.length;
-                        setTimeout(typeEffect, 500);
-                    } else {
-                        setTimeout(typeEffect, 70);
-                    }
-                } else {
-                    typedElement.textContent = currentPhrase.substring(0, charIndex + 1);
-                    charIndex++;
-                    if (charIndex === currentPhrase.length) {
-                        isDeleting = true;
-                        setTimeout(typeEffect, 2000);
-                    } else {
-                        setTimeout(typeEffect, 100);
-                    }
-                }
-            }
-            typeEffect();
+</body>
 
-            // تغيير خلفية النافبار عند التمرير
-            window.addEventListener('scroll', function () {
-                const navbar = document.getElementById('mainNav');
-                if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            });
-
-            // إضافة فقاعات متحركة في الهيرو
-            function createBubbles() {
-                const container = document.getElementById('bubbles-container');
-                if (!container) return;
-                for (let i = 0; i < 20; i++) {
-                    let bubble = document.createElement('div');
-                    bubble.classList.add('bubble');
-                    let size = Math.random() * 50 + 20;
-                    bubble.style.width = size + 'px';
-                    bubble.style.height = size + 'px';
-                    bubble.style.left = Math.random() * 100 + '%';
-                    bubble.style.animationDuration = Math.random() * 8 + 6 + 's';
-                    bubble.style.animationDelay = Math.random() * 5 + 's';
-                    bubble.style.opacity = Math.random() * 0.3 + 0.1;
-                    container.appendChild(bubble);
-                }
-            }
-            createBubbles();
-
-            // تأثير hover إضافي على الأزرار
-            const btns = document.querySelectorAll('.btn-outline-primary');
-            btns.forEach(btn => {
-                btn.addEventListener('mouseenter', (e) => {
-                    btn.style.transform = 'translateY(-3px)';
-                    btn.style.transition = '0.2s';
-                });
-                btn.addEventListener('mouseleave', () => {
-                    btn.style.transform = 'translateY(0)';
-                });
-            });
-
-            // Smooth scroll مع تعويض الـ navbar الثابت
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        const offset = 70;
-                        const elementPosition = target.offsetTop - offset;
-                        window.scrollTo({
-                            top: elementPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-
-            // تأثير ظهور الصور عند التمرير بشكل أفضل (تأكد من AOS)
-            // إضافة تأثير parallax بسيط للهيرو مع حركة الماوس (اختياري لمسة إضافية)
-            document.querySelector('.hero-section')?.addEventListener('mousemove', (e) => {
-                const hero = e.currentTarget;
-                const x = (e.clientX / window.innerWidth) * 20;
-                const y = (e.clientY / window.innerHeight) * 10;
-                hero.style.backgroundPosition = `${x}% ${y}%`;
-            });
-            /* ============================= */
-/* تحسينات التجاوب لجميع الشاشات */
-/* ============================= */
-
-/* الأجهزة اللوحية */
-@media (max-width: 992px) {
-
-    .hero-section {
-        padding: 80px 20px;
-    }
-
-    .typed-text {
-        font-size: 1.8rem;
-    }
-
-    .lead.fs-3 {
-        font-size: 1.3rem !important;
-    }
-
-    .section-title {
-        font-size: 1.8rem;
-    }
-
-    .navbar-nav {
-        text-align: center;
-        padding-top: 10px;
-    }
-
-    .card {
-        margin-bottom: 20px;
-    }
-}
-
-/* الجوال */
-@media (max-width: 768px) {
-
-    body {
-        font-size: 15px;
-    }
-
-    .hero-section {
-        padding: 60px 15px;
-    }
-
-    .typed-text {
-        font-size: 1.4rem;
-        line-height: 1.8;
-    }
-
-    .lead.fs-3 {
-        font-size: 1.1rem !important;
-    }
-
-    .hero-section h2 {
-        font-size: 1.3rem;
-    }
-
-    .section-title {
-        font-size: 1.5rem;
-        text-align: center;
-        display: block;
-    }
-
-    .stat-card {
-        padding: 20px 10px;
-    }
-
-    .icon-box {
-        font-size: 2rem;
-    }
-
-    .btn-primary-custom {
-        width: 100%;
-        padding: 12px;
-    }
-
-    footer {
-        text-align: center;
-    }
-
-    table {
-        font-size: 14px;
-    }
-}
-
-/* الجوالات الصغيرة جداً */
-@media (max-width: 480px) {
-
-    .typed-text {
-        font-size: 1.1rem;
-    }
-
-    .hero-section h2 {
-        font-size: 1rem;
-    }
-
-    .lead.fs-3 {
-        font-size: 0.95rem !important;
-    }
-
-    .navbar-brand {
-        font-size: 1rem;
-    }
-
-    .section-title {
-        font-size: 1.3rem;
-    }
-
-    .card {
-        border-radius: 15px;
-    }
-
-    .stat-card h3 {
-        font-size: 1.5rem;
-    }
-}
-        </script>
-    </body>
-
-    </html>
+</html>
